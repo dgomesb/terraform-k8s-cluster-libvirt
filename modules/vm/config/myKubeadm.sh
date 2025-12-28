@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sleep 3
+
 if ! command -v kubeadm &> /dev/null; then
   echo "Error: 'kubeadm' is not installed"
   exit 1
@@ -34,7 +36,11 @@ while [[ -z "$TOKEN" || -z "$HASH" ]]; do
   fi
 done
 
-sudo kubeadm join ${main_cp_ip}:6443 --token $TOKEN --discovery-token-ca-cert-hash $HASH &> /shared/kubeadm-join-$HOSTNAME.out
+sudo kubeadm join ${main_cp_ip}:6443 \
+  --token $TOKEN \
+  --discovery-token-ca-cert-hash $HASH \
+  --cri-socket unix:///var/run/containerd/containerd.sock \
+  &> /shared/kubeadm-join-$HOSTNAME.out
 chmod 666 /shared/kubeadm-join-$HOSTNAME.out
 
 %{ endif }

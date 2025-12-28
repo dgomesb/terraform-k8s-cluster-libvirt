@@ -2,23 +2,17 @@ resource "libvirt_volume" "disk" {
 
   count = var.vm_count
 
-  name   = format("%s%02d.qcow2", var.hostname, count.index + 1)
-  pool   = var.shared_config.storage_name
-  target = { format = { type = "qcow2" }, permissions = { mode = "0666" } }
+  name     = format("%s%02d.qcow2", var.hostname, count.index + 1)
+  pool     = var.shared_config.storage_name
+  target   = { format = { type = "qcow2" }, permissions = { mode = "0666" } }
+  capacity = var.disk_size
+  #capacity_unit = "MiB" ## not working. Default in Bytes
 
-  create = { content = { url = var.shared_config.base_os } }
-
-}
-
-resource "null_resource" "resize_disk" {
-
-  count = var.vm_count
-
-  depends_on = [libvirt_volume.disk]
-
-  provisioner "local-exec" {
-    command = "qemu-img resize ${libvirt_volume.disk[count.index].path} ${var.vm_disk_size}G"
+  backing_store = {
+    path   = var.shared_config.base_os
+    format = { type = "qcow2" }
   }
+
 }
 
 resource "libvirt_cloudinit_disk" "cloudinit" {

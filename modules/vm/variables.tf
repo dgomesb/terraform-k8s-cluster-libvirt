@@ -2,7 +2,7 @@ variable "vm_count" { type = number }
 variable "hostname" { type = string }
 variable "vcpu" { type = number }
 variable "memory" { type = number }
-variable "vm_disk_size" { type = number }
+variable "disk_size" { type = number }
 
 variable "shared_config" {
   type = object({

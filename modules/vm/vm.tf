@@ -76,10 +76,3 @@ resource "libvirt_domain" "vm" {
   }
 
 }
-
-## not needed when using network cloud-init
-#data "libvirt_domain_interface_addresses" "vm" {
-#  depends_on = [libvirt_domain.vm]
-#  count      = var.count_nodes
-#  domain     = libvirt_domain.vm[count.index].name
-#}
