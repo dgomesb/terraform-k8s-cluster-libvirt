@@ -1,7 +1,6 @@
 #cloud-config
 # vim: syntax=yaml
-# examples:
-# https://cloudinit.readthedocs.io/en/latest/topics/examples.html
+# examples: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
 ---
 package_update: true
 package_upgrade: true
@@ -17,8 +16,8 @@ locale: ${locale}
 ssh_pwauth: true
 disable_root: false
 chpasswd:
-  list: |
-    root:password
+  users:
+    - { name: root, password: ${user_passwd} }
   expire: false
 
 users:
@@ -34,6 +33,7 @@ users:
 
 mounts:
   - [shared_dir, /shared, 9p, defaults, "0", "0"]
+  - [swap, null]
 
 apt:
   preserve_source_list: true
@@ -41,7 +41,6 @@ apt:
     kubernetes:
       filename: kubernetes.list
       source: deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v${kubeadm_version}/deb/ /
-      append: false
 
 packages:
   - containerd
