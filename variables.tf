@@ -38,20 +38,20 @@ variable "shared_config" {
     shared_dir    = optional(string, null) ## from locals
     dynamic_hosts = optional(string, null) ## from locals
     main_cp_ip    = optional(string, null) ## First control plane IP
-    #virtual network
+    # virtual network
     vn_name = optional(string, null) ## from locals
     vn_cidr = optional(string, null) ## from locals
     # storage
     storage_name = optional(string, null) ## from locals
-    base_os_name = optional(string, "ubuntu-24.04-server-cloudimg-amd64.img")
-    #userdata.tpl
+    base_os_name = optional(string, "noble-server-cloudimg-amd64.img")
+    # userdata.tpl
     user_name       = optional(string, "ubuntu") ## User name to be created in the nodes
     user_passwd     = optional(string, "")       ## from locals (to keep it sensitive)
     user_ssh_pub    = optional(string, "")       ## PUBLIC ssh key
     timezone        = optional(string, "UTC")    ## Set the system timezone
     locale          = optional(string, "en_US")  ## Configure the system locale and apply it system-wide
     kubeadm_version = optional(string, "1.35")   ## Define major.minor and the newest patch will be installed
-    #network.tpl
+    # network.tpl
     net_domain = optional(string, "local.k8s") ## VMs FQDN
   })
   default = {}

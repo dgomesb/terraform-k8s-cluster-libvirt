@@ -20,7 +20,11 @@ resource "libvirt_domain" "vm" {
     type         = "hvm"
     type_arch    = "x86_64"
     type_machine = "q35"
+    firmware     = "efi"
+    boot         = ["hd"]
   }
+
+  features = { acpi = true, apic = {} }
 
   devices = {
     filesystems = [{
@@ -31,25 +35,12 @@ resource "libvirt_domain" "vm" {
     }]
     serials = [{ type = "pty", target_port = "0", target_type = "isa-serial" }]
     channels = [
-      {
-        source = { unix = { mode = "bind" } }
-        target = { virt_io = { name = "org.qemu.guest_agent.0" } }
-      },
-      {
-        source = { spice_vmc = true }
-        target = { virt_io = { name = "com.redhat.spice.0" } }
-      }
+      { source = { unix = { mode = "bind" } }, target = { virt_io = { name = "org.qemu.guest_agent.0" } } },
+      { source = { spice_vmc = true }, target = { virt_io = { name = "com.redhat.spice.0" } } }
     ]
     rngs = [{ model = "virtio", backend = { random = "/dev/urandom" } }]
     # https://libvirt.org/formatdomain.html#video-devices
-    videos = [{
-      model = {
-        type    = "virtio"
-        heads   = 1
-        primary = "yes"
-        accel   = { accel3d = "no" }
-      }
-    }]
+    videos   = [{ model = { type = "virtio", heads = 1, primary = "yes", accel = { accel3d = "no" } } }]
     graphics = [{ spice = { auto_port = true } }]
     inputs   = [{ type = "tablet", bus = "usb" }]
     disks = [

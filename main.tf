@@ -52,7 +52,7 @@ resource "libvirt_volume" "base_os" {
   create = {
     content = {
       ## from internet
-      url = "https://cloud-images.ubuntu.com/releases/noble/release/${var.shared_config.base_os_name}"
+      url = "https://cloud-images.ubuntu.com/noble/current/${var.shared_config.base_os_name}"
 
       ## from local
       #url = "file://${var.shared_config.base_os_name}"
