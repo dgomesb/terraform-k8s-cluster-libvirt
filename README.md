@@ -95,14 +95,14 @@ kubectl logs -n kube-system weave-net-(ID) | grep ipalloc-range
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | 2.3.5 |
-| <a name="requirement_libvirt"></a> [libvirt](#requirement\_libvirt) | 0.9.1 |
+| <a name="requirement_libvirt"></a> [libvirt](#requirement\_libvirt) | 0.9.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_external"></a> [external](#provider\_external) | 2.3.5 |
-| <a name="provider_libvirt"></a> [libvirt](#provider\_libvirt) | 0.9.1 |
+| <a name="provider_libvirt"></a> [libvirt](#provider\_libvirt) | 0.9.2 |
 
 ## Modules
 
@@ -116,7 +116,7 @@ kubectl logs -n kube-system weave-net-(ID) | grep ipalloc-range
 
 | Name | Type |
 |------|------|
-| [libvirt_volume.base_os](https://registry.terraform.io/providers/dmacvicar/libvirt/0.9.1/docs/resources/volume) | resource |
+| [libvirt_volume.base_os](https://registry.terraform.io/providers/dmacvicar/libvirt/0.9.2/docs/resources/volume) | resource |
 | [external_external.get_vol](https://registry.terraform.io/providers/hashicorp/external/2.3.5/docs/data-sources/external) | data source |
 
 ## Inputs
