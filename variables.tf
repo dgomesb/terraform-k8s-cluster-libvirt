@@ -112,3 +112,13 @@ variable "pod_cidr" {
   type        = string
   default     = "10.244.0.0/16"
 }
+
+variable "cpu" {
+  description = "CPU configuration"
+  type = object({
+    sockets = optional(number, 1)
+    cores   = optional(number, 1)
+    threads = optional(number, 2)
+  })
+  default = {}
+}

@@ -3,7 +3,7 @@
 # examples: https://cloudinit.readthedocs.io/en/latest/topics/examples.html
 ---
 package_update: true
-package_upgrade: true
+package_upgrade: false
 
 hostname: ${hostname}
 fqdn: ${fqdn}

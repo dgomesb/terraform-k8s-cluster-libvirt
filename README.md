@@ -95,14 +95,14 @@ kubectl logs -n kube-system weave-net-(ID) | grep ipalloc-range
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.0 |
 | <a name="requirement_external"></a> [external](#requirement\_external) | 2.3.5 |
-| <a name="requirement_libvirt"></a> [libvirt](#requirement\_libvirt) | 0.9.2 |
+| <a name="requirement_libvirt"></a> [libvirt](#requirement\_libvirt) | 0.9.6 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_external"></a> [external](#provider\_external) | 2.3.5 |
-| <a name="provider_libvirt"></a> [libvirt](#provider\_libvirt) | 0.9.2 |
+| <a name="provider_libvirt"></a> [libvirt](#provider\_libvirt) | 0.9.6 |
 
 ## Modules
 
@@ -116,7 +116,7 @@ kubectl logs -n kube-system weave-net-(ID) | grep ipalloc-range
 
 | Name | Type |
 |------|------|
-| [libvirt_volume.base_os](https://registry.terraform.io/providers/dmacvicar/libvirt/0.9.2/docs/resources/volume) | resource |
+| [libvirt_volume.base_os](https://registry.terraform.io/providers/dmacvicar/libvirt/0.9.6/docs/resources/volume) | resource |
 | [external_external.get_vol](https://registry.terraform.io/providers/hashicorp/external/2.3.5/docs/data-sources/external) | data source |
 
 ## Inputs
@@ -125,6 +125,7 @@ kubectl logs -n kube-system weave-net-(ID) | grep ipalloc-range
 |------|-------------|------|---------|:--------:|
 | <a name="input_count_server"></a> [count\_server](#input\_count\_server) | Number of control plane(s) | `number` | `1` | no |
 | <a name="input_count_worker"></a> [count\_worker](#input\_count\_worker) | Number of worker(s) | `number` | `2` | no |
+| <a name="input_cpu"></a> [cpu](#input\_cpu) | CPU configuration | <pre>object({<br/>    sockets = optional(number, 1)<br/>    cores   = optional(number, 1)<br/>    threads = optional(number, 2)<br/>  })</pre> | `{}` | no |
 | <a name="input_pod_cidr"></a> [pod\_cidr](#input\_pod\_cidr) | Default Flannel CIDR | `string` | `"10.244.0.0/16"` | no |
 | <a name="input_shared_config"></a> [shared\_config](#input\_shared\_config) | common variables shared among virtual machines | <pre>object({<br/>    shared_dir    = optional(string, null) ## from locals<br/>    dynamic_hosts = optional(string, null) ## from locals<br/>    main_cp_ip    = optional(string, null) ## First control plane IP<br/>    # virtual network<br/>    vn_name = optional(string, null) ## from locals<br/>    vn_cidr = optional(string, null) ## from locals<br/>    # storage<br/>    storage_name = optional(string, null) ## from locals<br/>    base_os_name = optional(string, "noble-server-cloudimg-amd64.img")<br/>    # userdata.tpl<br/>    user_name       = optional(string, "ubuntu") ## User name to be created in the nodes<br/>    user_passwd     = optional(string, "")       ## from locals (to keep it sensitive)<br/>    user_ssh_pub    = optional(string, "")       ## PUBLIC ssh key<br/>    timezone        = optional(string, "UTC")    ## Set the system timezone<br/>    locale          = optional(string, "en_US")  ## Configure the system locale and apply it system-wide<br/>    kubeadm_version = optional(string, "1.35")   ## Define major.minor and the newest patch will be installed<br/>    # network.tpl<br/>    net_domain = optional(string, "local.k8s") ## VMs FQDN<br/>  })</pre> | `{}` | no |
 | <a name="input_start_server_ip"></a> [start\_server\_ip](#input\_start\_server\_ip) | When count\_server > 1, the first server will get this IP | `number` | `11` | no |

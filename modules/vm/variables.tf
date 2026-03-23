@@ -1,6 +1,16 @@
 variable "vm_count" { type = number }
 variable "hostname" { type = string }
-variable "vcpu" { type = number }
+
+variable "cpu" {
+  description = "CPU configuration"
+  type = object({
+    sockets = optional(number, 1)
+    cores   = optional(number, 1)
+    threads = optional(number, 2)
+  })
+  default = {}
+}
+
 variable "memory" { type = number }
 variable "disk_size" { type = number }
 

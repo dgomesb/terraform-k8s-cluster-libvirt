@@ -2,29 +2,29 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/dmacvicar/libvirt" {
-  version     = "0.9.2"
-  constraints = "0.9.2"
+  version     = "0.9.6"
+  constraints = "0.9.6"
   hashes = [
-    "h1:MBE8yrUIR7bGW861aAueWTxudZvRD83rKi0SQT1qji4=",
-    "zh:4471f1c89189c11b9c1aa772a65401fdad0f1ca65842d7fc22847f590a5d1438",
-    "zh:47817b38ad85989d5f1c0b8a77653f319027daa6c05fea11ee573c5060d84448",
-    "zh:62619dbbef48aa1a292a73a56dd6e3b25f7c984fe3d638953773a0805344794e",
-    "zh:6bad66fd02617cfc4b622dd667ba5240045822dbaf5ea2ac0391e5c4bcefc80e",
-    "zh:89951231bbf4a75731a7f506dad5e33e36853a8c365c2af0d47ae664a71761e8",
-    "zh:a036901d89d6e3dc838bed527fa0c97b092c92ec73becbd251d657832e72ca30",
-    "zh:aa162ea3b11d077653f30f67fff4f70fc69628631a5ff4dc5e78a30eac349f05",
-    "zh:ba4e85d075a2aceee6d681c0662ed17d636793f3710ba81ca1f2fb581262d7a0",
-    "zh:c050feb07fbbd988b2d4fa296f34a1040caee68b37a09702b31e94fc5357d700",
-    "zh:c25b7642b9bd5daad8bd2c5584cbdc44eb22a657425140e563ae7dcfa9288c98",
-    "zh:ccd4d1a07806139adcf2e29f4854eef27c9e320eaf2f2e4ff4f7a54f0a8363d5",
-    "zh:d22d7bc20e3ab1e593d96d121fd4028cb63cfdd3e6f22772a2565b9e953fa575",
-    "zh:d79682bc86a38a6176a0b0720dbda262e25f440263eb8719cda28130d999ba19",
-    "zh:fcc8b19c287e21e1faf9464da76799febc7197a94e5da036e52027e439abc66e",
+    "h1:PzQkmlhdvH0msAKarKGSd3KwjHkKF0dTYHRkVUt4VgY=",
+    "zh:2f6472da20f87d202c237b0fc1092d63aef23f9ea27dc9a1bb0f1211c3560848",
+    "zh:2fb9f3c42dd0523fcfe0181a152853d9e6d59cde8dd3af89977fdbe8e75c7878",
+    "zh:484562b8aabef9f01dd93c95e4bc4645d58b94f32fb84f3c85605efff4661665",
+    "zh:54ddb8ed547863c0388fd53c96ae589cf5eb314d088bad818021e1cc1c462b74",
+    "zh:6965a344729ab193e881cc15c70bdc746e9161dd3e605b1b5f623a1e35914f4c",
+    "zh:6c0438e7c7cc7c36fb33180c1498ab929a01b601b04146b5701a126fd8c6b59a",
+    "zh:6caff97c2cb5f439cb3f2267436092a9336fea016c5e68572a4257aa3acc64d6",
+    "zh:83c27b5e6b0b1659fe3cfd86d8e4083333a0cb284546ee2130ea8c9042147f3b",
+    "zh:976678a3256768fdec184de09a87af75b9621bc77e4118bb9d632bf4e98b5471",
+    "zh:c88580c5093d8f0a21f7fa5066dea12504ca4d36f1668eec498594e936e4dd5b",
+    "zh:cba04cd1850657a5dce509baeae34d712334eb08c314b1c27b321bc1a02da956",
+    "zh:d2ea7bfae35b990bc946ff96335145af4329b57ecc7f5c9128080fc9fa4e5bd7",
+    "zh:d9eff0a59a2f591da6694eec7632b9f1f78125a2ea0646d8135c919fd41caf26",
   ]
 }
 
 provider "registry.terraform.io/hashicorp/external" {
-  version = "2.3.5"
+  version     = "2.3.5"
+  constraints = "2.3.5"
   hashes = [
     "h1:smKSos4zs57pJjQrNuvGBpSWth2el9SgePPbPHo0aps=",
     "zh:6e89509d056091266532fa64de8c06950010498adf9070bf6ff85bc485a82562",

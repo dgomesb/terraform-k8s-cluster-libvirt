@@ -13,8 +13,15 @@ resource "libvirt_domain" "vm" {
   type        = "kvm"
   memory      = var.memory
   memory_unit = "MiB"
-  vcpu        = var.vcpu
-  cpu         = { mode = "host-passthrough" }
+  vcpu        = var.cpu.sockets * var.cpu.cores * var.cpu.threads
+  cpu = {
+    mode = "host-passthrough"
+    topology = {
+      sockets = var.cpu.sockets
+      cores   = var.cpu.cores
+      threads = var.cpu.threads
+    }
+  }
 
   os = {
     type         = "hvm"
@@ -46,7 +53,7 @@ resource "libvirt_domain" "vm" {
     disks = [
       {
         device = "disk"
-        driver = { name = "qemu", type = "qcow2" }
+        driver = { name = "qemu", type = "qcow2", cache = "writeback", discard = "unmap" }
         source = { file = { file = libvirt_volume.disk[count.index].path } }
         target = { dev = "vda", bus = "virtio" }
         serial = random_integer.serial.result + count.index

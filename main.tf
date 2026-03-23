@@ -80,7 +80,7 @@ module "k8s_servers" {
 
   vm_count  = var.count_server
   hostname  = "server"
-  vcpu      = 2
+  cpu       = var.cpu
   memory    = 1900        # MiB
   disk_size = 21474836480 # Bytes -> 20GiB
 
@@ -102,7 +102,7 @@ module "k8s_workers" {
 
   vm_count  = var.count_worker
   hostname  = "worker"
-  vcpu      = 2
+  cpu       = var.cpu
   memory    = 1900        # MiB
   disk_size = 34359738368 # Bytes -> 32GiB
 

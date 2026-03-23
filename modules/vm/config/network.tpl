@@ -18,7 +18,7 @@ network:
           - home.lan
         addresses:
           - ${ip_gw}
-          - 1.1.1.1
+          - 10.0.0.3
           - 8.8.8.8
 %{ endif }
 
